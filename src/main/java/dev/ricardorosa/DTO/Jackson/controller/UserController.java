@@ -1,5 +1,7 @@
 package dev.ricardorosa.DTO.Jackson.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,12 +45,16 @@ public class UserController {
 	
 	@PostMapping
 	public UserDTO save(@RequestBody User newUser) {
+		System.out.println(newUser.toString());
 		return this.toUserDTO(repository.save(newUser));
 	}
 	
 	private UserDTO toUserDTO(User user) {
 		UserDTO dto = new UserDTO();
 		dto.setName(user.getName());
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		dto.setDateOfBirth(user.getDateOfBirth().format(formatter));
 		
 		List<String> userEmails = new ArrayList<>();
 		for (Email email : user.getEmails()) {
