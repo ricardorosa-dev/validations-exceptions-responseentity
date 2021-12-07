@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.exceptions;
+package dev.ricardorosa.Validations.exceptions;
 
 public class AlreadyExistsException extends RuntimeException{
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.dto;
+package dev.ricardorosa.Validations.dto;
 
 import java.time.LocalDate;
 import java.util.List;

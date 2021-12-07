@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.entity;
+package dev.ricardorosa.Validations.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import dev.ricardorosa.DTO.Jackson.Jackson.EmailJsonDeserializer;
+import dev.ricardorosa.Validations.jackson.EmailJsonDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.Jackson;
+package dev.ricardorosa.Validations.jackson;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import dev.ricardorosa.DTO.Jackson.entity.Email;
-import dev.ricardorosa.DTO.Jackson.entity.User;
+import dev.ricardorosa.Validations.entity.Email;
+import dev.ricardorosa.Validations.entity.User;
 
 public class UserJsonDeserializer extends JsonDeserializer<User>{
 

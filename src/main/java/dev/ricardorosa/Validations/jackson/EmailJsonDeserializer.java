@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.Jackson;
+package dev.ricardorosa.Validations.jackson;
 
 import java.io.IOException;
 
@@ -11,10 +11,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import dev.ricardorosa.DTO.Jackson.entity.Email;
-import dev.ricardorosa.DTO.Jackson.entity.User;
-import dev.ricardorosa.DTO.Jackson.exceptions.NotFoundException;
-import dev.ricardorosa.DTO.Jackson.repository.UserRepository;
+import dev.ricardorosa.Validations.entity.Email;
+import dev.ricardorosa.Validations.entity.User;
+import dev.ricardorosa.Validations.exceptions.NotFoundException;
+import dev.ricardorosa.Validations.repository.UserRepository;
 
 public class EmailJsonDeserializer extends JsonDeserializer<Email>{
 	

@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.controller;
+package dev.ricardorosa.Validations.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ricardorosa.DTO.Jackson.dto.EmailDTO;
-import dev.ricardorosa.DTO.Jackson.entity.Email;
-import dev.ricardorosa.DTO.Jackson.exceptions.NotFoundException;
-import dev.ricardorosa.DTO.Jackson.repository.EmailRepository;
-import dev.ricardorosa.DTO.Jackson.service.EmailService;
+import dev.ricardorosa.Validations.dto.EmailDTO;
+import dev.ricardorosa.Validations.entity.Email;
+import dev.ricardorosa.Validations.exceptions.NotFoundException;
+import dev.ricardorosa.Validations.repository.EmailRepository;
+import dev.ricardorosa.Validations.service.EmailService;
 
 @RestController
 @RequestMapping("/email")

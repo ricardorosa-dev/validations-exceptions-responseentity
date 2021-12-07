@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.entity;
+package dev.ricardorosa.Validations.entity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import dev.ricardorosa.DTO.Jackson.Jackson.UserJsonDeserializer;
+import dev.ricardorosa.Validations.jackson.UserJsonDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.controller;
+package dev.ricardorosa.Validations.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ricardorosa.DTO.Jackson.dto.UserDTO;
-import dev.ricardorosa.DTO.Jackson.entity.Email;
-import dev.ricardorosa.DTO.Jackson.entity.User;
-import dev.ricardorosa.DTO.Jackson.repository.UserRepository;
-import dev.ricardorosa.DTO.Jackson.service.UserService;
+import dev.ricardorosa.Validations.dto.UserDTO;
+import dev.ricardorosa.Validations.entity.Email;
+import dev.ricardorosa.Validations.entity.User;
+import dev.ricardorosa.Validations.repository.UserRepository;
+import dev.ricardorosa.Validations.service.UserService;
 
 @RestController
 @RequestMapping("/user")

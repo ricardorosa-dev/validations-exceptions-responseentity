@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.service;
+package dev.ricardorosa.Validations.service;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dev.ricardorosa.DTO.Jackson.entity.Email;
-import dev.ricardorosa.DTO.Jackson.entity.User;
-import dev.ricardorosa.DTO.Jackson.exceptions.AlreadyExistsException;
-import dev.ricardorosa.DTO.Jackson.exceptions.NotFoundException;
-import dev.ricardorosa.DTO.Jackson.exceptions.WrongEmailFormatException;
-import dev.ricardorosa.DTO.Jackson.exceptions.IncompleteBodyException;
-import dev.ricardorosa.DTO.Jackson.repository.EmailRepository;
-import dev.ricardorosa.DTO.Jackson.repository.UserRepository;
+import dev.ricardorosa.Validations.entity.Email;
+import dev.ricardorosa.Validations.entity.User;
+import dev.ricardorosa.Validations.exceptions.AlreadyExistsException;
+import dev.ricardorosa.Validations.exceptions.IncompleteBodyException;
+import dev.ricardorosa.Validations.exceptions.NotFoundException;
+import dev.ricardorosa.Validations.exceptions.WrongEmailFormatException;
+import dev.ricardorosa.Validations.repository.EmailRepository;
+import dev.ricardorosa.Validations.repository.UserRepository;
 
 @Service
 public class EmailService {

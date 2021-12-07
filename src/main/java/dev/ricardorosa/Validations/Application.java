@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson;
+package dev.ricardorosa.Validations;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

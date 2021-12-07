@@ -1,4 +1,4 @@
-package dev.ricardorosa.DTO.Jackson.exceptions;
+package dev.ricardorosa.Validations.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
