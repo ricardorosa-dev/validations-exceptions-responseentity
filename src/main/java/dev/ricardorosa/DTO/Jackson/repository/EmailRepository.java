@@ -7,5 +7,7 @@ import dev.ricardorosa.DTO.Jackson.entity.Email;
 
 @Repository
 public interface EmailRepository extends JpaRepository<Email, Long>{
+	
+	Email findByAddress(String address);
 
 }

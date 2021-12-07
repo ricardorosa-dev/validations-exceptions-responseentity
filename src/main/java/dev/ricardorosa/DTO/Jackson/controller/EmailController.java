@@ -8,50 +8,69 @@ import javax.management.RuntimeErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.ricardorosa.DTO.Jackson.dto.EmailDTO;
 import dev.ricardorosa.DTO.Jackson.entity.Email;
+import dev.ricardorosa.DTO.Jackson.exceptions.NotFoundException;
 import dev.ricardorosa.DTO.Jackson.repository.EmailRepository;
+import dev.ricardorosa.DTO.Jackson.service.EmailService;
 
 @RestController
 @RequestMapping("/email")
 public class EmailController {
 	
-	private EmailRepository repository;
+	private EmailService service;
 	
 	@Autowired
-	public EmailController(EmailRepository repository) {
-		this.repository = repository;
+	public EmailController(EmailService service) {
+		this.service = service;
 	}
 	
 	@GetMapping
-	public List<EmailDTO> findAll() {
-		return repository.findAll().stream()
+	public ResponseEntity<List<EmailDTO>> findAll() {
+		List<EmailDTO> allEmails = service.findAll().stream()
 				.map(email -> this.toEmailDTO(email))
 				.collect(Collectors.toList());
+		
+		return new ResponseEntity<>(allEmails, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public EmailDTO findById(Long id) {
-		return this.toEmailDTO(repository.findById(id)
-				.orElseThrow(RuntimeException::new));
+	public ResponseEntity<EmailDTO> findById(@PathVariable("id") Long id) {
+		EmailDTO email = this.toEmailDTO(service.findById(id));
+		
+		return new ResponseEntity<>(email, HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> save(@RequestBody Email newEmail) {
-		if (newEmail.getUser() == null) {
-			return new ResponseEntity<>(
-					"The user associated with this name doesn't exist.", 
-					HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<EmailDTO> save(@RequestBody Email newEmail) {
+		EmailDTO email = this.toEmailDTO(service.save(newEmail));
 		
-		repository.save(newEmail);
-		return new ResponseEntity<>("Email created.", HttpStatus.CREATED);
+		return new ResponseEntity<>(email, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<EmailDTO> update(
+			@PathVariable("id") Long id, 
+			@RequestBody Email updateEmail) {
+		EmailDTO email = this.toEmailDTO(service.update(id, updateEmail));
+		
+		return new ResponseEntity<>(email, HttpStatus.ACCEPTED);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+		service.delete(id);
+		
+		return new ResponseEntity<>("Email deleted.", HttpStatus.NO_CONTENT);
 	}
 	
 	EmailDTO toEmailDTO(Email email) {

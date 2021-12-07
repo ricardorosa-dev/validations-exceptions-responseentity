@@ -26,13 +26,17 @@ public class UserJsonDeserializer extends JsonDeserializer<User>{
 		JsonNode root = codec.readTree(p);
 		
 		User user = new User();
-		user.setName(root.get("name").asText());
+		if (root.get("name") != null) {
+			user.setName(root.get("name").asText());
+		}
+
+		if (root.get("dateOfBirth") != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			user.setDateOfBirth(LocalDate.parse(root.get("dateOfBirth").asText(), formatter));
+		}
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		user.setDateOfBirth(LocalDate.parse(root.get("date_of_birth").asText(), formatter));
-		
-		List<Email> Emails = new ArrayList<>();
-		user.setEmails(Emails);
+		List<Email> emails = new ArrayList<>();
+		user.setEmails(emails);
 		
 		return user;
 	}

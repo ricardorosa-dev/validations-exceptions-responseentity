@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import dev.ricardorosa.DTO.Jackson.entity.Email;
 import dev.ricardorosa.DTO.Jackson.entity.User;
+import dev.ricardorosa.DTO.Jackson.exceptions.NotFoundException;
 import dev.ricardorosa.DTO.Jackson.repository.UserRepository;
 
 public class EmailJsonDeserializer extends JsonDeserializer<Email>{
@@ -32,11 +33,18 @@ public class EmailJsonDeserializer extends JsonDeserializer<Email>{
 		JsonNode root = codec.readTree(p);
 		
 		Email email = new Email();
-		email.setAddress(root.get("address").asText());
 		
-		String userName = root.get("user").asText();
-		User incomingUser = userRepository.findByName(userName).orElse(null);
-		email.setUser(incomingUser);
+		if (root.get("address") != null) {
+			email.setAddress(root.get("address").asText());
+		}
+		
+		if (root.get("user") != null) {
+			String userName = root.get("user").asText();
+			
+			User incomingUser = userRepository.findByName(userName)
+					.orElseThrow(() -> new NotFoundException("user", "name", userName));
+			email.setUser(incomingUser);
+		}
 		
 		return email;
 	}
