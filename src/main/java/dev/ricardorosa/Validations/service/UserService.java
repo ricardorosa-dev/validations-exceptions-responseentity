@@ -39,8 +39,8 @@ public class UserService {
 			throw new IncompleteBodyException("user", "'name' and 'dateOfBirth'");
 		}
 		
-		User exists = repository.findByName(newUser.getName())
-				.orElseThrow(() -> new NotFoundException("user", "name", newUser.getName()));
+		User exists = repository.findByName(newUser.getName()).orElse(null);
+		
 		if (exists != null) {
 			throw new AlreadyExistsException("user", "name", exists.getName());
 		}
